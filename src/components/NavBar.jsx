@@ -2,7 +2,7 @@ import CartWidget from "./CartWidget";
 
 const NavBar = () => {
     return (
-        <nav className="navbar navbar-expand-lg bg-light fixed-top w-100 px-3">
+        <nav className="navbar navbar-expand-lg bg-light w-100 px-3">
             <div className="container-fluid">
                 <a className="navbar-brand fs-1" href="#">
                     La Cueva
