@@ -3,7 +3,7 @@ const Item = ({ item }) => {
         <div className="item">
             <img
                 className="img-fluid"
-                style={{ width: "80%" }}
+                style={{ maxWidth: "150px", maxHeight: "150px", objectFit: "cover" }}
                 src={item.pictureUrl}
                 alt={item.title}
             />

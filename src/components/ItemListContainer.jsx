@@ -20,14 +20,14 @@ const getItems = () => {
                     title: "Escudo",
                     description: "Escudo resistente al fuego.",
                     price: 100,
-                    pictureUrl: "/images/escudo.png",
+                    pictureUrl: "./src/assets/escudo-vikingo.png",
                 },
                 {
                     id: 3,
                     title: "Poción",
                     description: "Poción de curación mágica.",
                     price: 50,
-                    pictureUrl: "/images/pocion.png",
+                    pictureUrl: "./src/assets/gatorade-red.png",
                 },
             ]);
         }, 2000); // Simula retraso de 2 segundos
