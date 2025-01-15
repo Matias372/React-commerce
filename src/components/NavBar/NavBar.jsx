@@ -1,12 +1,13 @@
-import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom"; // Importamos Link de react-router-dom
+import CartWidget from "../CartWidget/CartWidget";
 
 const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg bg-light w-100 px-3">
             <div className="container-fluid">
-                <a className="navbar-brand fs-1" href="#">
+                <Link className="navbar-brand fs-1" to="/">
                     La Cueva
-                </a>
+                </Link>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -24,28 +25,24 @@ const NavBar = () => {
                 >
                     <ul className="navbar-nav me-4">
                         <li className="nav-item">
-                            <a
-                                className="nav-link active"
-                                aria-current="page"
-                                href="#"
-                            >
+                            <Link className="nav-link active" to="/">
                                 Inicio
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" to="#">
                                 Armas
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" to="#">
                                 Armaduras
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link className="nav-link" to="#">
                                 Herramientas
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>

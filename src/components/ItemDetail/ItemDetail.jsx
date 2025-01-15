@@ -5,6 +5,7 @@ const ItemDetail = ({ item }) => {
             <h2>{item.title}</h2>
             <p>{item.description}</p>
             <p>Precio: ${item.price}</p>
+            <p>Categoría: {item.category}</p>
             <button>Agregar al carrito</button>
         </div>
     );

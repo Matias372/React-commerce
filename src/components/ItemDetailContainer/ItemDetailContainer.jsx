@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ItemList from "./ItemList";
-import "bootstrap/dist/css/bootstrap.min.css"; // Importa Bootstrap
+import { useParams } from "react-router-dom"; // Importar useParams
+import ItemDetail from "../ItemDetail/ItemDetail";
 
 // Simulación de datos (mock)
 const getItems = () => {
@@ -13,49 +13,51 @@ const getItems = () => {
                     description: "Espada forjada en fuego de dragón.",
                     price: 150,
                     pictureUrl:
-                        "./src/assets/espada-de-los-reyes-catolicos.png",
+                        "../../src/assets/espada-de-los-reyes-catolicos.png",
                 },
                 {
                     id: 2,
                     title: "Escudo",
                     description: "Escudo resistente al fuego.",
                     price: 100,
-                    pictureUrl: "./src/assets/escudo-vikingo.png",
+                    pictureUrl: "../../src/assets/escudo-vikingo.png",
                 },
                 {
                     id: 3,
                     title: "Poción",
                     description: "Poción de curación mágica.",
                     price: 50,
-                    pictureUrl: "./src/assets/gatorade-red.png",
+                    pictureUrl: "../../src/assets/gatorade-red.png",
                 },
             ]);
         }, 2000); // Simula retraso de 2 segundos
     });
 };
 
-const ItemListContainer = () => {
-    const [items, setItems] = useState([]);
+const ItemDetailContainer = () => {
+    const { id } = useParams(); // Obtener el id desde la URL
+    const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Efecto para cargar los productos al montar el componente
+    // Efecto para cargar el producto al montar el componente
     useEffect(() => {
-        getItems().then((data) => {
-            setItems(data);
+        getItems().then((items) => {
+            const selectedItem = items.find(item => item.id === parseInt(id)); // Buscar el producto por id
+            setItem(selectedItem); // Cargar el producto con el id correspondiente
             setLoading(false);
         });
-    }, []);
+    }, [id]); // Recargar cuando el id cambie
 
     return (
         <div className="container mt-4">
-            <h2 className="text-center mb-4">Listado de productos</h2>
+            <h2 className="text-center">Detalle del Producto</h2>
             {loading ? (
-                <p className="text-center">Cargando productos...</p>
+                <p className="text-center">Cargando detalles...</p>
             ) : (
-                <ItemList items={items} />
+                <ItemDetail item={item} />
             )}
         </div>
     );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;

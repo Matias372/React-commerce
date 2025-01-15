@@ -1,4 +1,4 @@
-import Item from "./Item";
+import Item from "../Item/Item";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ItemList = ({ items }) => {
