@@ -7,33 +7,36 @@ export const useCart = () => useContext(CartContext);
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
-    // Función para agregar productos al carrito
+    // Agregar producto al carrito o actualizar cantidad si ya existe
     const addItem = (item, quantity) => {
         const existingItem = cart.find(cartItem => cartItem.id === item.id);
         if (existingItem) {
-            // Si el producto ya está en el carrito, actualizamos la cantidad
             setCart(cart.map(cartItem =>
                 cartItem.id === item.id
                     ? { ...cartItem, quantity: cartItem.quantity + quantity }
                     : cartItem
             ));
         } else {
-            // Si el producto no está en el carrito, lo agregamos
             setCart([...cart, { ...item, quantity }]);
         }
     };
 
-    // Función para eliminar un producto del carrito
+    // Eliminar un producto del carrito
     const removeItem = (itemId) => {
         setCart(cart.filter(item => item.id !== itemId));
     };
-    
-    // Función para calcular la cantidad total de productos únicos
+
+    // Vaciar todo el carrito
+    const clearCart = () => setCart([]);
+
+    // Cantidad total de productos en el carrito
     const totalItems = () => cart.reduce((acc, item) => acc + item.quantity, 0);
 
-    // Valores proporcionados por el contexto
+    // Calcular el precio total del carrito
+    const totalPrice = () => cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
     return (
-        <CartContext.Provider value={{ cart, addItem, removeItem, totalItems }}>
+        <CartContext.Provider value={{ cart, addItem, removeItem, totalItems, clearCart, totalPrice }}>
             {children}
         </CartContext.Provider>
     );

@@ -1,0 +1,45 @@
+.navbar {
+    background: url('../../assets/texture/brown-wooden-textured-flooring-background.jpg') no-repeat center center;
+    background-size: cover;
+    border-bottom: 4px solid #5a3e1b;
+    font-family: 'Cinzel', serif;
+    color: #f5e6c8;
+}
+
+.navbar a {
+    color: #f5e6c8 !important;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navbar-toggler-icon {
+    filter: invert(85%);
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(90, 62, 27, 0.6);
+    border-radius: 5px;
+}
+
+.cart-icon {
+    font-size: 1.5rem;
+    color: #f5e6c8;
+}
+
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background: rgba(90, 62, 27, 0.9);
+        padding: 10px;
+    }
+}

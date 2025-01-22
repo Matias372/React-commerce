@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom"; // Importamos Link de react-router-dom
+import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
+import styles from "./NavBar.module.css";
 
 const NavBar = () => {
     return (
-        <nav className="navbar navbar-expand-lg bg-light w-100 px-3">
+        <nav className={`navbar navbar-expand-lg ${styles.navbar} w-100 px-3`}>
             <div className="container-fluid">
-                <Link className="navbar-brand fs-1" to="/">
+                <Link className={`navbar-brand fs-1 ${styles["navbar-brand"]}`} to="/">
                     La Cueva
                 </Link>
                 <button
@@ -19,34 +20,25 @@ const NavBar = () => {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div
-                    className="collapse navbar-collapse justify-content-end fw-bold"
-                    id="navbarNav"
-                >
+                <div className="collapse navbar-collapse justify-content-end fw-bold" id="navbarNav">
                     <ul className="navbar-nav me-4">
                         <li className="nav-item">
-                            <Link className="nav-link active" to="/">
-                                Inicio
-                            </Link>
+                            <Link className={`nav-link ${styles["nav-link"]}`} to="/">Inicio</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">
-                                Armas
-                            </Link>
+                            <Link className={`nav-link ${styles["nav-link"]}`} to="/category/Armas">Armas</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">
-                                Armaduras
-                            </Link>
+                            <Link className={`nav-link ${styles["nav-link"]}`} to="/category/Armaduras">Armaduras</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">
-                                Herramientas
-                            </Link>
+                            <Link className={`nav-link ${styles["nav-link"]}`} to="/category/Consumibles">Consumibles</Link>
                         </li>
                     </ul>
                 </div>
-                <CartWidget />
+                <Link to="/cart">
+                    <CartWidget className={styles["cart-icon"]} />
+                </Link>
             </div>
         </nav>
     );

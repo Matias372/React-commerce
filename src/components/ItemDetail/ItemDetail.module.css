@@ -1,0 +1,81 @@
+.item-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: url('../../assets/texture/WarmParchment.jpg') no-repeat center center;
+    background-size: cover;
+    border: 5px solid #5a3e1b;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Cinzel', serif;
+    color: #3e2723;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: auto;
+    gap: 20px;
+}
+
+.item-image {
+    flex: 1;
+    max-width: 350px;
+}
+
+.item-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 3px solid #5a3e1b;
+}
+
+.item-info {
+    flex: 2;
+    text-align: left;
+    padding: 10px;
+}
+
+.item-info h2 {
+    font-size: 2rem;
+    color: #4a2c16;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+.item-info p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.detail-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.detail-button {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    background-color: #7b2d26;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.detail-button:hover {
+    background-color: #9e2a2b;
+}
+
+@media (max-width: 768px) {
+    .item-detail {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .item-info {
+        text-align: center;
+    }
+}
