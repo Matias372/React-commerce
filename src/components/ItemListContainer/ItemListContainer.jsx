@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Importamos useParams para obtener la categoría desde la URL
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
-import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "./ItemListContainer.module.css";
 
-// Simulación de datos (mock)
 const getItems = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -43,7 +42,7 @@ const getItems = () => {
                 },
                 {
                     id: 5,
-                    title: "Lórica segmentata",
+                    title: "Armadura segmentata",
                     category: "Armaduras",
                     description: "El nombre Lórica segmentata proviene del latín y hace referencia a la división en placas metálicas que conforman esta impresionante armadura. Cada segmento ha sido cuidadosamente diseñado para brindar una protección incomparable sin comprometer la movilidad del portador. Con un grosor de 1,2 mm (18ga) y fabricada en acero resistente, esta lórica segmentata es capaz de soportar los embates más duros de la batalla. Su peso de 11-12 kg garantiza una experiencia cómoda y segura, permitiendo al guerrero concentrarse únicamente en la victoria. La lórica segmentata de Battle Merchant es la elección preferida de expertos en recreación histórica, coleccionistas y entusiastas de la era romana. Su nivel de detalle y acabado impecable la hacen perfecta tanto para su exhibición en un museo como para ser lucida en eventos temáticos y festivales medievales.",
                     price: 30,
@@ -58,33 +57,30 @@ const getItems = () => {
                     pictureUrl: "/assets/tienda-saxon.png",
                 }
             ]);
-        }, 2000); // Simula retraso de 2 segundos
+        }, 2000);
     });
 };
 
 const ItemListContainer = () => {
-    const { id } = useParams(); // Obtenemos la categoría desde la URL
+    const { id } = useParams();
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getItems().then((data) => {
-            // Filtramos los productos si hay una categoría seleccionada
             const filteredItems = id 
-                ?data.filter(item => item.category.toLowerCase() === id.toLowerCase()) 
+                ? data.filter(item => item.category.toLowerCase() === id.toLowerCase()) 
                 : data;
             setItems(filteredItems);
             setLoading(false);
         });
-    }, [id]); // Se ejecuta cada vez que cambia la categoría
+    }, [id]);
 
     return (
-        <div className="container mt-4">
-            <h2 className="text-center mb-4">
-                {id ? `Categoría: ${id}` : "Listado de productos"}
-            </h2>
+        <div className={styles["item-list-container"]}>
+            <h2>{id ? `Categoría: ${id}` : "Listado de productos"}</h2>
             {loading ? (
-                <p className="text-center">Cargando productos...</p>
+                <p className={styles["loading"]}>Cargando productos...</p>
             ) : (
                 <ItemList items={items} />
             )}

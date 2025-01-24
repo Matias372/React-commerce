@@ -10,8 +10,10 @@ const Item = ({ item }) => {
     const productInCart = cart.find(cartItem => cartItem.id === item.id);
 
     const handleAddToCart = (quantity) => {
-        addItem(item, quantity);
+        addItem(item, quantity); 
+        setShowCounter(true);
     };
+    
 
     const handleRemoveFromCart = () => {
         removeItem(item.id);

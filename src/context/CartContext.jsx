@@ -13,7 +13,7 @@ const CartProvider = ({ children }) => {
         if (existingItem) {
             setCart(cart.map(cartItem =>
                 cartItem.id === item.id
-                    ? { ...cartItem, quantity: cartItem.quantity + quantity }
+                    ? { ...cartItem, quantity } // 🔹 Ahora reemplaza la cantidad en lugar de sumarla
                     : cartItem
             ));
         } else {

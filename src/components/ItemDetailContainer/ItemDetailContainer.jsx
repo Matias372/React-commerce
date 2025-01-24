@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Importamos useParams
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import styles from "./ItemDetailContainer.module.css";
 
 // Simulación de datos (mock)
 const getItems = () => {
@@ -42,7 +43,7 @@ const getItems = () => {
                 },
                 {
                     id: 5,
-                    title: "Lórica segmentata",
+                    title: "Armadura segmentata",
                     category: "Armaduras",
                     description: "El nombre Lórica segmentata proviene del latín y hace referencia a la división en placas metálicas que conforman esta impresionante armadura. Cada segmento ha sido cuidadosamente diseñado para brindar una protección incomparable sin comprometer la movilidad del portador. Con un grosor de 1,2 mm (18ga) y fabricada en acero resistente, esta lórica segmentata es capaz de soportar los embates más duros de la batalla. Su peso de 11-12 kg garantiza una experiencia cómoda y segura, permitiendo al guerrero concentrarse únicamente en la victoria. La lórica segmentata de Battle Merchant es la elección preferida de expertos en recreación histórica, coleccionistas y entusiastas de la era romana. Su nivel de detalle y acabado impecable la hacen perfecta tanto para su exhibición en un museo como para ser lucida en eventos temáticos y festivales medievales.",
                     price: 30,
@@ -54,28 +55,21 @@ const getItems = () => {
 };
 
 const ItemDetailContainer = () => {
-    const { id } = useParams(); // Obtener el id desde la URL
+    const { id } = useParams();
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getItems().then((items) => {
-            const selectedItem = items.find(item => item.id === parseInt(id)); // Buscar el producto por id
+            const selectedItem = items.find((item) => item.id === parseInt(id));
             setItem(selectedItem);
             setLoading(false);
         });
-    }, [id]); // Recargar cuando el id cambie
+    }, [id]);
 
     return (
-        <div className="container mt-4">
-            <h2 className="text-center">Detalle del Producto</h2>
-            {loading ? (
-                <p className="text-center">Cargando detalles...</p>
-            ) : item ? (
-                <ItemDetail item={item} />
-            ) : (
-                <p className="text-center">Producto no encontrado</p>
-            )}
+        <div className={styles["item-detail-container"]}>
+            {loading ? <p className={styles["loading"]}>Cargando detalles...</p> : <ItemDetail item={item} />}
         </div>
     );
 };

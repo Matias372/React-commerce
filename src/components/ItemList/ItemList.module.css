@@ -1,0 +1,32 @@
+.item-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 🔹 Mínimo 4 columnas en pantallas grandes */
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background: url('../../assets/texture/beige-fabric-texture.jpg') repeat;
+    background-size: cover;
+    border-radius: 10px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Pantallas medianas (hasta 1200px) → 3 columnas */
+@media (max-width: 1200px) {
+    .item-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Pantallas pequeñas (hasta 900px) → 2 columnas */
+@media (max-width: 900px) {
+    .item-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celulares (hasta 600px) → 1 columna */
+@media (max-width: 600px) {
+    .item-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

@@ -1,9 +1,9 @@
 import Item from "../Item/Item";
-import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "./ItemList.module.css";
 
 const ItemList = ({ items }) => {
     return (
-        <div className="item-list row row-cols-2 row-cols-md-3">
+        <div className={styles["item-list"]}>
             {items.map((item) => (
                 <Item key={item.id} item={item} />
             ))}
