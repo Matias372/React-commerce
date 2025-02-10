@@ -2,29 +2,24 @@
     width: 100%;
     min-height: 100vh;
     padding: 30px;
-    background: url('../../assets/texture/dirty-ancient.jpg') repeat;
-    background-size: cover;
     font-family: 'Cinzel', serif;
     text-align: center;
-    color: #f5e6c5; /* 🔹 Color beige claro para contraste */
+    color: #f5e6c5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 /* Estilo del título */
 .item-list-container h2 {
     font-size: 2rem;
     margin-bottom: 15px;
-    color: #ffdd99; /* 🔹 Un dorado pálido que resalta mejor */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 🔹 Sombra negra para mejorar la visibilidad */
+    color: #4a2c16; 
 }
 
 /* Mensaje de carga */
 .loading {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #f5e6c5; /* 🔹 Beige claro para mayor contraste */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 🔹 Sombra negra para resaltar */
+    color: #4a2c16; 
 }

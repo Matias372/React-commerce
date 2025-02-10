@@ -25,13 +25,13 @@ const Item = ({ item }) => {
 
     return (
         <div className={styles.item}>
-            <img className={styles.image} src={item.pictureUrl} alt={item.title} />
+            <img className={styles.image} src={item.urlimage} alt={item.title} />
             <h3 className={styles.title}>{item.title}</h3>
             <p className={styles.price}>Precio: ${item.price}</p>
             {productInCart ? (
                 <ItemCount
                     initial={productInCart.quantity}
-                    stock={10}
+                    stock={item.stock}
                     onAdd={handleAddToCart}
                     onRemove={handleRemoveFromCart}
                 />

@@ -7,7 +7,7 @@ const CartWidget = () => {
     return (
         <div className="d-flex flex-column align-items-center position-relative">
             {totalItems() > 0 && (
-                <span className="badge bg-primary position-absolute top-0 start-100 translate-middle">
+                <span className="badge bg-primary position-absolute top-0 start-100 translate-middle d-flex justify-content-center">
                     {totalItems()}
                 </span>
             )}

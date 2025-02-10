@@ -9,7 +9,8 @@
     color: #3e2723;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease-in-out;
-    max-width: 250px;
+    max-width: 240px;
+    max-height: 400px;
     margin: auto;
 }
 
@@ -27,7 +28,7 @@
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-top: 10px;
     color: #4a2c16;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
@@ -50,7 +51,7 @@
     background-color: #7b2d26;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 0.4em 0.8em !important;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;

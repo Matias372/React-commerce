@@ -23,7 +23,7 @@ const ItemDetail = ({ item }) => {
     return (
         <div className={styles["item-detail"]}>
             <div className={styles["item-image"]}>
-                <img src={item.pictureUrl} alt={item.title} />
+                <img className={styles.image} src={item.urlimage} alt={item.title} />
             </div>
             <div className={styles["item-info"]}>
                 <h2>{item.title}</h2>

@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 100vh;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.3); /* 🔹 Fondo oscuro semitransparente */
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,7 +11,7 @@
 .loading {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ffdd99; /* 🔹 Color dorado para resaltar */
+    color: #4a2c16;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     text-align: center;
 }

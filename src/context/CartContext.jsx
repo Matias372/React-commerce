@@ -7,13 +7,19 @@ export const useCart = () => useContext(CartContext);
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
-    // Agregar producto al carrito o actualizar cantidad si ya existe
     const addItem = (item, quantity) => {
         const existingItem = cart.find(cartItem => cartItem.id === item.id);
+        const newQuantity = existingItem ? existingItem.quantity + quantity : quantity;
+
+        if (newQuantity > item.stock) {
+            alert(`No puedes agregar más de ${item.stock} unidades de este producto.`);
+            return;
+        }
+
         if (existingItem) {
             setCart(cart.map(cartItem =>
                 cartItem.id === item.id
-                    ? { ...cartItem, quantity } // 🔹 Ahora reemplaza la cantidad en lugar de sumarla
+                    ? { ...cartItem, quantity: newQuantity }
                     : cartItem
             ));
         } else {
@@ -21,18 +27,14 @@ const CartProvider = ({ children }) => {
         }
     };
 
-    // Eliminar un producto del carrito
     const removeItem = (itemId) => {
         setCart(cart.filter(item => item.id !== itemId));
     };
 
-    // Vaciar todo el carrito
     const clearCart = () => setCart([]);
 
-    // Cantidad total de productos en el carrito
     const totalItems = () => cart.reduce((acc, item) => acc + item.quantity, 0);
 
-    // Calcular el precio total del carrito
     const totalPrice = () => cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     return (

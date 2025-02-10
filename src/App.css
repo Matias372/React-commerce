@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  background-color: #E5CFBA;
 }
 
 .container {

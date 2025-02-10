@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ItemCount = ({ initial, stock, onAdd, onRemove }) => {
+const ItemCount = ({ initial, stock, onAdd }) => {
     const [count, setCount] = useState(initial);
 
     const handleIncrement = () => {
@@ -20,8 +20,7 @@ const ItemCount = ({ initial, stock, onAdd, onRemove }) => {
             <button onClick={handleDecrement} disabled={count <= 1}>-</button>
             <span>{count}</span>
             <button onClick={handleIncrement} disabled={count >= stock}>+</button>
-            <button onClick={() => onAdd(count)}>Agregar</button> {/* Ahora establece el valor en lugar de sumarlo */}
-            <button onClick={onRemove}>Eliminar</button>
+            <button onClick={() => onAdd(count)}>Agregar</button>
         </div>
     );
 };

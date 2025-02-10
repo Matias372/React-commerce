@@ -19,7 +19,7 @@ const Cart = () => {
                     <ul className={styles["list-group"]}>
                         {cart.map((item) => (
                             <li key={item.id} className={styles["list-group-item"]}>
-                                <img src={item.pictureUrl} alt={item.title} style={{ width: "50px", height: "50px", objectFit: "cover" }} />
+                                <img className={styles.image} src={item.urlimage} alt={item.title} style={{ width: "50px", height: "50px", objectFit: "cover" }} />
                                 <span>{item.title} - ${item.price} x {item.quantity}</span>
                                 <button className={styles["btn-danger"]} onClick={() => removeItem(item.id)}>Eliminar</button>
                             </li>
