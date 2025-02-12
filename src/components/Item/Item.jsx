@@ -1,7 +1,7 @@
 import { useCart } from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import { useNavigate } from "react-router-dom";
-import styles from "./Item.module.css"; // Importamos los estilos
+import styles from "./Item.module.css";
 
 const Item = ({ item }) => {
     const { cart, addItem, removeItem } = useCart();
@@ -9,11 +9,9 @@ const Item = ({ item }) => {
 
     const productInCart = cart.find(cartItem => cartItem.id === item.id);
 
-    const handleAddToCart = (quantity) => {
-        addItem(item, quantity); 
-        setShowCounter(true);
+    const handleSetQuantity = (quantity) => {
+        addItem(item, quantity); // 🔹 Directamente ajusta la cantidad
     };
-    
 
     const handleRemoveFromCart = () => {
         removeItem(item.id);
@@ -32,13 +30,13 @@ const Item = ({ item }) => {
                 <ItemCount
                     initial={productInCart.quantity}
                     stock={item.stock}
-                    onAdd={handleAddToCart}
+                    onSetQuantity={handleSetQuantity}
                     onRemove={handleRemoveFromCart}
                 />
             ) : (
                 <div className={styles.buttons}>
                     <button className={styles.button} onClick={handleViewDetails}>Ver detalles</button>
-                    <button className={styles.button} onClick={() => handleAddToCart(1)}>Agregar al carrito</button>
+                    <button className={styles.button} onClick={() => handleSetQuantity(1)}>Agregar</button>
                 </div>
             )}
         </div>

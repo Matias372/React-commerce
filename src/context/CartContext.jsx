@@ -2,29 +2,33 @@ import { createContext, useState, useContext } from 'react';
 
 const CartContext = createContext();
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => {
+    const context = useContext(CartContext);
+    if (!context) {
+        throw new Error("useCart debe estar dentro de un CartProvider");
+    }
+    return context;
+};
 
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
     const addItem = (item, quantity) => {
-        const existingItem = cart.find(cartItem => cartItem.id === item.id);
-        const newQuantity = existingItem ? existingItem.quantity + quantity : quantity;
-
-        if (newQuantity > item.stock) {
+        if (quantity > item.stock) {
             alert(`No puedes agregar más de ${item.stock} unidades de este producto.`);
             return;
         }
 
-        if (existingItem) {
-            setCart(cart.map(cartItem =>
-                cartItem.id === item.id
-                    ? { ...cartItem, quantity: newQuantity }
-                    : cartItem
-            ));
-        } else {
-            setCart([...cart, { ...item, quantity }]);
-        }
+        setCart(prevCart => {
+            const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
+            if (existingItem) {
+                return prevCart.map(cartItem =>
+                    cartItem.id === item.id ? { ...cartItem, quantity } : cartItem
+                );
+            } else {
+                return [...prevCart, { ...item, quantity }];
+            }
+        });
     };
 
     const removeItem = (itemId) => {

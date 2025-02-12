@@ -28,7 +28,7 @@ const Cart = () => {
                     <h4 className="text-end mt-3">Total: ${totalPrice()}</h4>
                     <div className="d-flex justify-content-end mt-3">
                         <button className={styles["btn-warning"]} onClick={clearCart}>Vaciar Carrito</button>
-                        <button className={styles["btn-success"]}>Finalizar Compra</button>
+                        <Link to="/checkout" className="btn btn-success">Finalizar Compra</Link>
                     </div>
                 </>
             )}

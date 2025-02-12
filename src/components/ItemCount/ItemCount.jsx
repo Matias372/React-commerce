@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const ItemCount = ({ initial, stock, onAdd }) => {
+const ItemCount = ({ initial, stock, onSetQuantity, onRemove }) => {
     const [count, setCount] = useState(initial);
+
+    useEffect(() => {
+        onSetQuantity(count);
+    }, [count]);
 
     const handleIncrement = () => {
         if (count < stock) {
@@ -20,7 +24,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
             <button onClick={handleDecrement} disabled={count <= 1}>-</button>
             <span>{count}</span>
             <button onClick={handleIncrement} disabled={count >= stock}>+</button>
-            <button onClick={() => onAdd(count)}>Agregar</button>
+            <button onClick={onRemove} className="btn-danger">Eliminar</button>
         </div>
     );
 };
