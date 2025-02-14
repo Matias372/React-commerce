@@ -20,11 +20,15 @@ const Cart = () => {
                         {cart.map((item) => (
                             <li key={item.id} className={styles["list-group-item"]}>
                                 <img className={styles.image} src={item.urlimage} alt={item.title} style={{ width: "50px", height: "50px", objectFit: "cover" }} />
-                                <span>{item.title} - ${item.price} x {item.quantity}</span>
+                                <div className={styles["product-info"]}>
+                                    <span className={styles["product-name"]}>{item.title}</span> 
+                                    <span className={styles["product-details"]}>- ${item.price} x {item.quantity}</span>
+                                </div>
                                 <button className={styles["btn-danger"]} onClick={() => removeItem(item.id)}>Eliminar</button>
                             </li>
                         ))}
                     </ul>
+
                     <h4 className="text-end mt-3">Total: ${totalPrice()}</h4>
                     <div className="d-flex justify-content-end mt-3">
                         <button className={styles["btn-warning"]} onClick={clearCart}>Vaciar Carrito</button>

@@ -4,21 +4,18 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Item.module.css";
 
 const Item = ({ item }) => {
-    const { cart, addItem, removeItem } = useCart();
+    const { cart, addItem } = useCart();
     const navigate = useNavigate();
 
+    //====== VERIFICA SI EL PRODUCTO YA ESTÁ EN EL CARRITO ======
     const productInCart = cart.find(cartItem => cartItem.id === item.id);
-
-    const handleSetQuantity = (quantity) => {
-        addItem(item, quantity); // 🔹 Directamente ajusta la cantidad
-    };
-
-    const handleRemoveFromCart = () => {
-        removeItem(item.id);
-    };
 
     const handleViewDetails = () => {
         navigate(`/item/${item.id}`);
+    };
+
+    const handleAddToCart = () => {
+        addItem(item, 1); 
     };
 
     return (
@@ -27,16 +24,16 @@ const Item = ({ item }) => {
             <h3 className={styles.title}>{item.title}</h3>
             <p className={styles.price}>Precio: ${item.price}</p>
             {productInCart ? (
+                //====== MUESTRA EL CONTADOR SI EL PRODUCTO ESTÁ EN EL CARRITO ======
                 <ItemCount
                     initial={productInCart.quantity}
                     stock={item.stock}
-                    onSetQuantity={handleSetQuantity}
-                    onRemove={handleRemoveFromCart}
+                    item={item} 
                 />
             ) : (
                 <div className={styles.buttons}>
                     <button className={styles.button} onClick={handleViewDetails}>Ver detalles</button>
-                    <button className={styles.button} onClick={() => handleSetQuantity(1)}>Agregar</button>
+                    <button className={styles.button} onClick={handleAddToCart}>Agregar</button>
                 </div>
             )}
         </div>

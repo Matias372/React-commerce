@@ -2,25 +2,70 @@
     max-width: 500px;
     margin: auto;
     padding: 20px;
-    background-color: #f8f9fa;
+    background: url('../../assets/texture/WarmParchment.jpg') no-repeat center center;
+    background-size: cover;
+    border: 5px solid #5a3e1b;
     border-radius: 10px;
+    font-family: 'Cinzel', serif;
+    color: #3e2723;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4a2c16;
+    border-bottom: 3px solid #5a3e1b;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.checkoutForm {
+    background: rgba(255, 245, 230, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .checkoutForm input {
-    display: block;
     width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
+    padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 2px solid #5a3e1b;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    background-color: #fdf7e3;
+    color: #3e2723;
+}
+
+.checkoutForm input::placeholder {
+    color: #7a5c44;
+}
+
+.checkoutForm input:focus {
+    border-color: #7b2d26;
+    outline: none;
 }
 
 .checkoutForm button {
     width: 100%;
     padding: 10px;
-    background-color: #28a745;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    background-color: #7b2d26;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s ease-in-out;
 }
+
+.checkoutForm button:hover {
+    background-color: #9e2a2b;
+}
+
+

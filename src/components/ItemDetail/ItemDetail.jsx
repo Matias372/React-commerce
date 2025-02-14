@@ -4,20 +4,12 @@ import ItemCount from "../ItemCount/ItemCount";
 import styles from "./ItemDetail.module.css";
 
 const ItemDetail = ({ item }) => {
-    const { cart, addItem, removeItem } = useCart();
-    const [quantity, setQuantity] = useState(1);
-    const [showCounter, setShowCounter] = useState(false); // Controla si se muestra el contador
+    const { cart, addItem } = useCart(); // ===== CART Y ADDITEM SE UTILIZAN PARA MANEJAR EL CARRITO =====
 
     const productInCart = cart.find(cartItem => cartItem.id === item.id);
 
     const handleAddToCart = (quantity) => {
-        addItem(item, quantity);
-        setShowCounter(true); 
-    };
-
-    const handleRemoveFromCart = () => {
-        removeItem(item.id);
-        setShowCounter(false); 
+        addItem(item, quantity);  // ===== AGREGAR EL PRODUCTO CON LA CANTIDAD AL CARRITO =====
     };
 
     return (
@@ -31,14 +23,15 @@ const ItemDetail = ({ item }) => {
                 <p><strong>Precio:</strong> ${item.price}</p>
                 <p><strong>Categoría:</strong> {item.category}</p>
 
-                {/* si producto en carrito entonces muestra contador; de lo contrario no.*/}
-                {showCounter || productInCart ? (
-                    <ItemCount
-                        initial={productInCart ? productInCart.quantity : 1}
-                        stock={10}
-                        onAdd={handleAddToCart}
-                        onRemove={handleRemoveFromCart}
-                    />
+                {productInCart ? (
+                    <>
+                        <ItemCount
+                            initial={productInCart.quantity}
+                            stock={item.stock}
+                            item={item}
+                            onSetQuantity={handleAddToCart}  // ===== ACTUALIZA EL CARRITO CON LA NUEVA CANTIDAD =====
+                        />
+                    </>
                 ) : (
                     <div className={styles["detail-buttons"]}>
                         <button className={styles["detail-button"]} onClick={() => handleAddToCart(1)}>

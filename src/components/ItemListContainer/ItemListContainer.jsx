@@ -10,6 +10,7 @@ const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // ===== SE OBTIENEN LOS PRODUCTOS Y SE FILTRAN SEGÚN LA CATEGORÍA =====
     getProducts().then((data) => {
       const filteredItems = id
         ? data.filter(item => item.category.toLowerCase() === id.toLowerCase())
@@ -17,7 +18,7 @@ const ItemListContainer = () => {
       setItems(filteredItems);
       setLoading(false);
     });
-  }, [id]);
+  }, [id]); // ===== EFECTO QUE SE EJECUTA CUANDO CAMBIA LA CATEGORÍA =====
 
   return (
     <div className={styles["item-list-container"]}>

@@ -37,9 +37,3 @@
     color: #f5e6c8;
 }
 
-@media (max-width: 992px) {
-    .navbar-collapse {
-        background: rgba(90, 62, 27, 0.9);
-        padding: 10px;
-    }
-}

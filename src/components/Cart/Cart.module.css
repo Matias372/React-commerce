@@ -9,6 +9,7 @@
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     max-width: 800px;
     margin: auto;
+    min-width: 600px;
 }
 
 h2 {
@@ -36,23 +37,69 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .list-group-item img {
     border: 2px solid #5a3e1b;
     border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
 }
 
-span {
+.list-group-item div {
+    width: 17rem;
     display: inline-flex;
-    width: 18px !important;
-    margin-left: 3%;
-    margin-right: 3%;
-    justify-content: center;
+    gap: 10px;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 15px;
+    flex-direction: row-reverse;
+}
+
+.product-name {
+    flex: 2;
+    min-width: 150px;
+    max-width: 60%;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-price {
+    flex: 1;
+    text-align: center;
+    min-width: 80px;
+}
+
+.product-quantity {
+    flex: 1;
+    text-align: center;
+    min-width: 60px;
+}
+
+.btn-danger {
+    background-color: #7b2d26;
+    border: none;
+    color: white;
+    white-space: nowrap;
+    padding: 8px 12px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.btn-danger:hover {
+    background-color: #9e2a2b;
 }
 
 button {
-    min-width: 37px;    
+    min-width: 37px;
     min-height: 38px;
     background-color: #7b2d26;
     margin: 0.1em;
@@ -62,16 +109,6 @@ button {
     text-transform: uppercase;
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
-}
-
-.btn-danger {
-    background-color: #7b2d26;
-    border: none;
-    color: white;
-}
-
-.btn-danger:hover {
-    background-color: #9e2a2b;
 }
 
 .btn-warning {
@@ -94,27 +131,7 @@ button {
     background-color: #3a5d1c;
 }
 
-.text-center p {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
 .text-end {
     font-size: 1.5rem;
     font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    .list-group-item {
-        flex-direction: column;
-        text-align: center;
-    }
 }

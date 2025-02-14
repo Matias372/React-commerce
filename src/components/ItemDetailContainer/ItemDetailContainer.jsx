@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore"; // Importamos funciones necesarias
-import { db } from "../../firebaseConfig"; // Importamos la referencia de Firestore
+import { doc, getDoc } from "firebase/firestore"; // ===== IMPORTAMOS FUNCIONES NECESARIAS DE FIREBASE =====
+import { db } from "../../firebaseConfig"; // ===== IMPORTAMOS DATOS DE DATABASE DE FIRESTORE =====
 import ItemDetail from "../ItemDetail/ItemDetail";
 import styles from "./ItemDetailContainer.module.css";
 
@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
         const fetchItem = async () => {
             setLoading(true);
             try {
-                const docRef = doc(db, "Items", id); // Referencia al documento en Firestore
+                const docRef = doc(db, "Items", id); // ===== REFERENCIA AL DOCUMENTO EN FIRESTORE =====
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {

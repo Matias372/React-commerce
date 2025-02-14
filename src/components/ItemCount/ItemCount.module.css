@@ -1,0 +1,14 @@
+.item-count {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.item-count-span { 
+    display: inline-flex;
+    justify-content: center;
+    width: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+}

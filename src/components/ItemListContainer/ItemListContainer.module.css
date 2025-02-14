@@ -10,14 +10,12 @@
     align-items: center;
 }
 
-/* Estilo del título */
 .item-list-container h2 {
     font-size: 2rem;
     margin-bottom: 15px;
     color: #4a2c16; 
 }
 
-/* Mensaje de carga */
 .loading {
     font-size: 1.5rem;
     font-weight: bold;

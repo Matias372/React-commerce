@@ -33,7 +33,7 @@ const Checkout = () => {
             const orderRef = await addDoc(collection(db, "Orders"), order);
             setOrderId(orderRef.id);
 
-            // Reducir el stock de cada producto comprado
+            // Reduce stock
             for (const item of cart) {
                 const productRef = doc(db, "Items", item.id);
                 const productSnap = await getDoc(productRef);
@@ -48,7 +48,7 @@ const Checkout = () => {
                 }
             }
 
-            clearCart(); // Vaciar el carrito después de la compra
+            clearCart(); // Vacia el carrito después de la compra
         } catch (error) {
             console.error("Error al procesar la orden:", error);
         }
@@ -60,7 +60,7 @@ const Checkout = () => {
             {orderId ? (
                 <div className={styles.orderConfirmation}>
                     <h3>¡Gracias por tu compra!</h3>
-                    <p>Tu número de orden es: <strong>{orderId}</strong></p>
+                    <p>Tu Nro de orden es: <strong>{orderId}</strong></p>
                 </div>
             ) : (
                 <form onSubmit={handleSubmit} className={styles.checkoutForm}>
